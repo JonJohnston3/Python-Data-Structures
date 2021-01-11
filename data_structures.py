@@ -68,6 +68,14 @@ class LinkedList:
             print('Value out of range')
 
 
+    def search(self, value):
+        current_node = self.head_node
+        while current_node:
+            if current_node.get_value() == value:
+                return True
+            else:
+                current_node = current_node.get_next_node()
+        return False
     
 
 li = LinkedList(Node('yo'))
