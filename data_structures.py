@@ -41,10 +41,39 @@ class LinkedList:
         while current_node.get_next_node():
             current_node = current_node.get_next_node()
         current_node.set_next_node(new_node)
+
+    def remove_node_value(self, value):
+        current_node = self.head_node
+        while current_node:
+            if current_node.get_next_node().get_value() == value:
+                current_node.set_next_node(current_node.get_next_node().get_next_node())
+                current_node = None
+            else:
+                current_node = current_node.get_next_node()
+
+    def remove_node_position(self, position):
+        if position == 0:
+            self.head_node = self.head_node.get_next_node()
+        elif position < self.__len__():
+            current_node = self.head_node
+            i = 0
+            while current_node:
+                if i + 1 == position:
+                    current_node.set_next_node(current_node.get_next_node().get_next_node())                    
+                    current_node = None
+                else:
+                    current_node = current_node.get_next_node()
+                    i += 1
+        else:
+            print('Value out of range')
+
+
     
 
 li = LinkedList(Node('yo'))
 li.add_node(Node(47))
 li.add_node(Node(['bengals', 'dolphins', 'saints']))
 
-print(len(li))
+# print(li.search(48))
+
+# print(li)
